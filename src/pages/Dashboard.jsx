@@ -61,7 +61,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="p-4 md:p-8 lg:p-10 lg:ml-72 bg-secondary min-h-screen animate-premium">
+    <div className="p-6 md:p-10 bg-secondary min-h-screen animate-premium">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
         <div className="space-y-1">
           <h1 className="text-3xl md:text-5xl font-black text-primary tracking-tighter">

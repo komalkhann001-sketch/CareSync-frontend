@@ -44,14 +44,14 @@ const Patients = () => {
   );
 
   return (
-    <div className="p-8 ml-64 bg-grayLight min-h-screen">
-      <div className="flex justify-between items-center mb-8">
+    <div className="p-6 md:p-10 bg-secondary min-h-screen animate-premium">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
         <div>
-          <h1 className="text-3xl font-extrabold text-charcoal">Patient Management</h1>
-          <p className="text-gray-500">View and register clinic patients</p>
+          <h1 className="text-3xl md:text-4xl font-black text-primary tracking-tighter uppercase">Patient <span className="text-accent underline decoration-accent/20 underline-offset-8">Base</span></h1>
+          <p className="text-charcoal/50 text-xs md:text-sm font-bold uppercase tracking-widest mt-2">Executive Clinic Records</p>
         </div>
-        <Button onClick={() => setShowForm(!showForm)} variant={showForm ? 'outline' : 'primary'}>
-          {showForm ? 'Cancel' : <><UserPlus size={20} /> Add Patient</>}
+        <Button onClick={() => setShowForm(!showForm)} variant={showForm ? 'outline' : 'accent'} className="w-full md:w-auto shadow-xl shadow-accent/10 py-5 rounded-2xl">
+          {showForm ? 'Close Directory' : <><UserPlus size={20} className="mr-2" /> Onboard Patient</>}
         </Button>
       </div>
 
@@ -129,33 +129,33 @@ const Patients = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 transition-all duration-500">
         {filteredPatients.map((patient) => (
-          <Card key={patient._id} className="relative group">
-            <div className="flex justify-between items-start">
+          <Card key={patient._id} className="luxury-glass relative group border-t-2 border-accent/10">
+            <div className="flex justify-between items-start mb-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary font-bold text-lg uppercase">
+                <div className="w-14 h-14 obsidian-gradient rounded-2xl flex items-center justify-center text-accent font-black text-xl shadow-lg border border-white/10 group-hover:scale-110 transition-transform duration-500">
                   {patient.name[0]}
                 </div>
                 <div>
-                  <h3 className="font-bold text-charcoal">{patient.name}</h3>
-                  <p className="text-sm text-gray-500">{patient.age} years • {patient.gender}</p>
+                  <h3 className="font-black text-primary tracking-tight text-lg uppercase group-hover:text-accent transition-colors">{patient.name}</h3>
+                  <p className="text-[10px] text-accent font-black uppercase tracking-widest">{patient.age} Y • {patient.gender}</p>
                 </div>
               </div>
-              <div className="flex gap-2">
-                <button className="p-2 text-gray-400 hover:text-primary"><Edit size={16} /></button>
-                <button className="p-2 text-gray-400 hover:text-error"><Trash2 size={16} /></button>
+            </div>
+            <div className="space-y-4 border-t border-accent/5 pt-6">
+              <div className="flex items-center gap-4 text-xs font-bold text-charcoal/60">
+                <div className="p-2 bg-accent/10 rounded-lg text-accent"><Phone size={14} /></div>
+                {patient.phone}
+              </div>
+              <div className="flex items-center gap-4 text-xs font-bold text-charcoal/60">
+                <div className="p-2 bg-accent/10 rounded-lg text-accent"><Calendar size={14} /></div>
+                {new Date(patient.createdAt).toLocaleDateString()}
               </div>
             </div>
-            <div className="mt-6 space-y-3">
-              <div className="flex items-center gap-3 text-sm text-gray-600">
-                <Phone size={16} className="text-primary" /> {patient.phone}
-              </div>
-              <div className="flex items-center gap-3 text-sm text-gray-600">
-                <Calendar size={16} className="text-primary" /> Registered: {new Date(patient.createdAt).toLocaleDateString()}
-              </div>
-            </div>
-            <Button variant="outline" className="w-full mt-6 text-sm">View Full History</Button>
+            <button className="w-full mt-8 py-4 bg-white/40 hover:bg-accent hover:text-white border border-accent/20 rounded-2xl text-[10px] uppercase font-black tracking-widest transition-all duration-300 active:scale-95 shadow-lg">
+              Open Medical File
+            </button>
           </Card>
         ))}
       </div>

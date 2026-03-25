@@ -64,14 +64,14 @@ const Doctors = () => {
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   return (
-    <div className="p-8 ml-64 bg-grayLight min-h-screen">
-      <div className="flex justify-between items-center mb-8">
+    <div className="p-6 md:p-10 bg-secondary min-h-screen animate-premium">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
         <div>
-          <h1 className="text-3xl font-extrabold text-charcoal">Doctor Management</h1>
-          <p className="text-gray-500">Manage clinic medical staff</p>
+          <h1 className="text-3xl md:text-4xl font-black text-primary tracking-tighter uppercase">Medical <span className="text-accent underline decoration-accent/20 underline-offset-8">Staff</span></h1>
+          <p className="text-charcoal/50 text-xs md:text-sm font-bold uppercase tracking-widest mt-2">Clinic Specialists Directory</p>
         </div>
-        <Button onClick={() => setShowForm(!showForm)}>
-          {showForm ? 'Cancel' : <><Plus size={20} /> Add Doctor</>}
+        <Button onClick={() => setShowForm(!showForm)} variant={showForm ? 'outline' : 'accent'} className="w-full md:w-auto py-5 px-8 rounded-2xl shadow-xl shadow-accent/10">
+          {showForm ? 'Close Directory' : <><Plus size={20} className="mr-2" /> Add Specialist</>}
         </Button>
       </div>
 
@@ -157,42 +157,34 @@ const Doctors = () => {
         </Card>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
         {doctors.map(doctor => (
-          <div key={doctor._id} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all group border-t-8 border-primary">
+          <div key={doctor._id} className="luxury-glass rounded-[2rem] overflow-hidden group border-t-4 border-accent transition-all duration-500 hover:scale-[1.02]">
             <div className="p-8">
-              <div className="flex items-center gap-6 mb-6">
+              <div className="flex items-center gap-6 mb-8">
                 <img 
                   src={doctor.profilePhoto || 'https://via.placeholder.com/150'} 
                   alt={doctor.name} 
-                  className="w-20 h-20 rounded-2xl object-cover ring-4 ring-primary ring-opacity-10"
+                  className="w-20 h-20 rounded-2xl object-cover ring-4 ring-accent ring-opacity-10 shadow-xl"
                 />
                 <div>
-                  <h3 className="text-xl font-bold text-charcoal">{doctor.name}</h3>
-                  <p className="text-primary font-medium">{doctor.specialization}</p>
+                  <h3 className="text-xl font-black text-primary tracking-tight uppercase group-hover:text-accent transition-colors">{doctor.name}</h3>
+                  <p className="text-accent font-black text-[10px] uppercase tracking-widest">{doctor.specialization}</p>
                 </div>
               </div>
 
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-3 text-sm text-gray-500">
-                  <Phone size={18} className="text-accent" /> {doctor.phone}
+              <div className="space-y-4 mb-10 border-t border-accent/5 pt-8">
+                <div className="flex items-center gap-4 text-xs font-bold text-charcoal/60 lowercase tracking-wide">
+                  <div className="p-2 obsidian-gradient rounded-xl text-accent"><Phone size={14} /></div> {doctor.phone}
                 </div>
-                <div className="flex items-center gap-3 text-sm text-gray-500">
-                  <Mail size={18} className="text-accent" /> {doctor.email}
-                </div>
-                <div className="flex items-start gap-3 text-sm text-gray-500">
-                  <Clock size={18} className="text-accent mt-1" />
-                  <div className="flex flex-wrap gap-1">
-                    {doctor.availableDays?.map((day, i) => (
-                      <span key={i} className="bg-gray-50 px-2 py-0.5 rounded text-[10px] font-bold uppercase">{day.slice(0,3)}</span>
-                    ))}
-                  </div>
+                <div className="flex items-center gap-4 text-xs font-bold text-charcoal/60 lowercase tracking-wide">
+                  <div className="p-2 obsidian-gradient rounded-xl text-accent"><Mail size={14} /></div> {doctor.email}
                 </div>
               </div>
 
-              <div className="flex gap-2">
-                <Button variant="accent" className="flex-1">View Profile</Button>
-                <button className="p-3 bg-error bg-opacity-10 text-error rounded-xl hover:bg-opacity-20 transition-all">
+              <div className="flex gap-4">
+                <Button variant="accent" className="flex-1 py-4 font-black uppercase text-[10px] tracking-widest rounded-2xl">View Profile</Button>
+                <button className="p-4 bg-error/10 text-error rounded-2xl hover:bg-error hover:text-white transition-all duration-300">
                   <Trash2 size={20} />
                 </button>
               </div>

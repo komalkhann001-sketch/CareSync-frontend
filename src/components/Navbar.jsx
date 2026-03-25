@@ -6,19 +6,22 @@ const Navbar = () => {
   const { user } = useAuth();
 
   return (
-    <div className="h-20 bg-white border-b border-gray-100 flex items-center justify-between px-8 ml-64 sticky top-0 z-40 backdrop-blur-md bg-opacity-80">
-      <div className="text-charcoal font-medium text-lg">
-        Welcome back, <span className="font-bold text-primary">{user?.name}</span>
+    <div className="h-24 bg-white/40 border-b border-accent/10 flex items-center justify-between px-6 md:px-10 sticky top-0 z-40 backdrop-blur-xl transition-all duration-300">
+      <div className="text-primary font-medium text-sm md:text-xl tracking-tight">
+        Welcome <span className="font-black text-accent">{user?.name}</span>
       </div>
-      <div className="flex items-center gap-6">
-        <button className="text-charcoal hover:text-primary transition-colors">
+      <div className="flex items-center gap-4 md:gap-8">
+        <button className="text-primary hover:text-accent transition-all hover:scale-110 active:scale-90 relative">
           <Bell size={24} />
+          <span className="absolute -top-1 -right-1 h-3 w-3 bg-accent rounded-full border-2 border-white animate-pulse"></span>
         </button>
-        <div className="flex items-center gap-3 border-l pl-6 border-gray-200">
-          <UserCircle size={32} className="text-primary" />
-          <div className="text-sm">
-            <p className="font-bold text-charcoal">{user?.name}</p>
-            <p className="text-gray-500 text-xs">{user?.role}</p>
+        <div className="flex items-center gap-4 border-l pl-4 md:pl-8 border-accent/10">
+          <div className="hidden md:block text-right">
+            <p className="font-black text-xs text-primary uppercase tracking-widest">{user?.name}</p>
+            <p className="text-secondary/50 text-[10px] font-bold uppercase">{user?.role}</p>
+          </div>
+          <div className="h-10 w-10 rounded-full obsidian-gradient border-2 border-accent/30 flex items-center justify-center text-accent font-black text-xs shadow-lg">
+            {user?.name?.charAt(0)}
           </div>
         </div>
       </div>

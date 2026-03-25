@@ -29,11 +29,13 @@ const ProtectedRoute = ({ children }) => {
   }
 
   return (
-    <div className="flex bg-gray-light min-h-screen">
+    <div className="min-h-screen bg-grayLight flex relative">
       <Sidebar />
-      <div className="flex-1">
+      <div className="flex-1 lg:ml-72 transition-all duration-500">
         <Navbar />
-        {children}
+        <main className="w-full">
+          {children}
+        </main>
       </div>
     </div>
   );
