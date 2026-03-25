@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  /* Premium Luxury Wellness Palette */
+  --color-primary: #1E2923;         /* Royal Obsidian */
+  --color-secondary: #FCFAF7;       /* Soft Pearl Cream */
+  --color-accent: #D4AF37;          /* Champagne Gold */
+  --color-accent-dark: #B8860B;     /* Darker Gold */
+  --color-gray-light: #F4F4F2;      /* Elegant Pale Gray */
+  --color-charcoal: #2D3436;        /* Slate Charcoal */
+  --color-error: #C0392B;           /* Deep Crimson */
+  --color-success: #27AE60;         /* Emerald Green */
+}
+
+@layer base {
+  body {
+    @apply bg-secondary text-charcoal;
+    margin: 0;
+    font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+.luxury-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.15); /* Subtle Gold Border */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  @apply shadow-2xl;
+  border-color: var(--color-accent);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+}
+
+.obsidian-gradient {
+  background: linear-gradient(135deg, #1E2923 0%, #2D3436 100%);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-premium {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
