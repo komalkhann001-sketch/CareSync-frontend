@@ -14,6 +14,8 @@ import Patients from './pages/Patients';
 import Doctors from './pages/Doctors';
 import Appointments from './pages/Appointments';
 import Prescriptions from './pages/Prescriptions';
+import BookAppointment from './pages/BookAppointment';
+
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -61,6 +63,7 @@ const App = () => {
           {/* Public Routes */}
           <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
           <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
+          <Route path="/book" element={<BookAppointment />} />
           
           {/* Protected Routes */}
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
@@ -71,10 +74,11 @@ const App = () => {
           <Route path="/prescriptions" element={<ProtectedRoute><Prescriptions /></ProtectedRoute>} />
           
           {/* Default Route */}
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/" element={<Navigate to="/book" replace />} />
           
           {/* Fallback for 404 */}
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
+
         </Routes>
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
       </Router>
