@@ -70,9 +70,13 @@ const Login = () => {
             </Button>
           </form>
 
-          <div className="mt-8 text-center text-white text-opacity-80">
+          <div className="mt-8 text-center text-white text-opacity-80 space-y-2">
             <p>New to CareSync? <Link to="/register" className="text-accent font-bold hover:underline">Register Clinic</Link></p>
+            <div className="pt-4 border-t border-white/10 mt-4">
+              <p className="text-sm">Are you a patient? <Link to="/book" className="text-accent font-bold hover:underline">Book an Appointment</Link></p>
+            </div>
           </div>
+
         </div>
       </div>
     </div>

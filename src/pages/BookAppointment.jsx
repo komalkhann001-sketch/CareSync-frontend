@@ -272,9 +272,17 @@ const BookAppointment = () => {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-gray-400 text-sm">
-          &copy; {new Date().getFullYear()} CareSync Medical Group. All rights reserved.
-        </p>
+        <div className="mt-8 text-center space-y-2">
+          <p className="text-gray-400 text-sm italic font-medium">
+            &copy; {new Date().getFullYear()} CareSync Medical Group. All rights reserved.
+          </p>
+          <div className="pt-2 border-t border-gray-100 mt-2">
+            <p className="text-xs text-gray-500 uppercase tracking-widest font-bold">
+              Are you a staff member? <Link to="/login" className="text-accent hover:underline">Clinic Login</Link>
+            </p>
+          </div>
+        </div>
+
       </div>
     </div>
   );
