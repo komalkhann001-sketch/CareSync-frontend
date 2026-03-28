@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Card from '../components/Card';
-import { Users, UserSquare2, CalendarClock, Clock, ArrowRight, FileText } from 'lucide-react';
+import { Users, UserSquare2, CalendarClock, Clock, ArrowRight, FileText, Wallet } from 'lucide-react';
 import api from '../utils/api';
 import { motion } from 'framer-motion';
 
@@ -29,6 +30,7 @@ const StatCard = ({ title, value, icon, delay }) => (
 );
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [stats, setStats] = useState({
     patients: 0,
     doctors: 0,
@@ -128,13 +130,28 @@ const Dashboard = () => {
         <div className="space-y-6 md:space-y-8 order-1 lg:order-2">
           <Card title="Executive Actions" icon={ArrowRight} className="luxury-glass border-t-4 border-accent">
             <div className="space-y-4 md:space-y-5">
-              <button className="w-full flex items-center justify-between p-4 md:p-5 obsidian-gradient rounded-2xl transition-all group shadow-xl border border-white/5 active:scale-95">
+              <button 
+                onClick={() => navigate('/appointments')}
+                className="w-full flex items-center justify-between p-4 md:p-5 obsidian-gradient rounded-2xl transition-all group shadow-xl border border-white/5 active:scale-95"
+              >
                 <span className="font-black text-[10px] md:text-xs uppercase tracking-widest text-white group-hover:text-accent transition-colors text-left">New Appointment</span>
                 <CalendarClock className="text-accent scale-75 md:scale-100 group-hover:rotate-12 transition-transform" />
               </button>
-              <button className="w-full flex items-center justify-between p-4 md:p-5 border-2 border-accent/20 bg-white rounded-2xl transition-all group active:scale-95">
+              
+              <button 
+                onClick={() => navigate('/patients')}
+                className="w-full flex items-center justify-between p-4 md:p-5 border-2 border-accent/20 bg-white rounded-2xl transition-all group active:scale-95"
+              >
                 <span className="font-black text-[10px] md:text-xs uppercase tracking-widest text-primary text-left">Onboard Patient</span>
                 <Users className="text-accent scale-75 md:scale-100 group-hover:scale-110 transition-transform" />
+              </button>
+
+              <button 
+                onClick={() => alert('Payment System coming soon!')}
+                className="w-full flex items-center justify-between p-4 md:p-5 border-2 border-success/30 bg-success/5 rounded-2xl transition-all group active:scale-95"
+              >
+                <span className="font-black text-[10px] md:text-xs uppercase tracking-widest text-success text-left">Log Payment</span>
+                <Wallet className="text-success scale-75 md:scale-100 group-hover:rotate-12 transition-transform" />
               </button>
             </div>
           </Card>

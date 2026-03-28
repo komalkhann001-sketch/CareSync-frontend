@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Bell, UserCircle } from 'lucide-react';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
   const { user } = useAuth();
@@ -11,7 +12,10 @@ const Navbar = () => {
         Welcome <span className="font-black text-accent">{user?.name}</span>
       </div>
       <div className="flex items-center gap-4 md:gap-8">
-        <button className="text-primary hover:text-accent transition-all hover:scale-110 active:scale-90 relative">
+        <button 
+          onClick={() => toast.info('No new notifications')}
+          className="text-primary hover:text-accent transition-all hover:scale-110 active:scale-90 relative"
+        >
           <Bell size={24} />
           <span className="absolute -top-1 -right-1 h-3 w-3 bg-accent rounded-full border-2 border-white animate-pulse"></span>
         </button>

@@ -33,10 +33,8 @@ const Sidebar = () => {
 
   const links = [
     { name: 'Dashboard', path: '/dashboard', icon: BarChart3 },
-    ...(user?.role === 'Admin' ? [
-      { name: 'Doctors', path: '/doctors', icon: UserSquare2 },
-      { name: 'Patients', path: '/patients', icon: Users },
-    ] : []),
+    { name: 'Doctors', path: '/doctors', icon: UserSquare2 },
+    { name: 'Patients', path: '/patients', icon: Users },
     { name: 'Appointments', path: '/appointments', icon: CalendarCheck },
     { name: 'Prescriptions', path: '/prescriptions', icon: FileText },
   ];
